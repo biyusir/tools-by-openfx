@@ -3,8 +3,10 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1034.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.it.controller.MainController">
    <children>
@@ -16,11 +18,13 @@
             <Pane fx:id="rightPane" layoutX="140.0" prefHeight="800.0" prefWidth="568.0">
                <children>
                   <JFXButton fx:id="transferBtn" layoutX="240.0" layoutY="347.0" mnemonicParsing="false" onAction="#transfer" style="-fx-border-color: #000; -fx-border-radius: 2px;" text="转化" />
-                  <JFXTextArea fx:id="originArea" layoutX="9.0"  prefHeight="334.0" prefWidth="554.0" style="-fx-border-color: #000; -fx-border-radius: 2px;" />
+                  <JFXTextArea fx:id="originArea" layoutX="9.0" prefHeight="334.0" prefWidth="554.0" style="-fx-border-color: #000; -fx-border-radius: 2px;" />
                   <JFXTextArea fx:id="transferArea" layoutX="9.0" layoutY="400.0" prefHeight="389.0" prefWidth="554.0" style="-fx-border-color: #000; -fx-border-radius: 2px;" />
                </children>
             </Pane>
+
             <JFXListView fx:id="listView" layoutX="721.0" layoutY="14.0" prefHeight="761.0" prefWidth="267.0" />
+            <JFXButton fx:id="jwtBtn" layoutX="15.0" layoutY="132.0" mnemonicParsing="false" onAction="#toJwtBtn" prefHeight="27.0" prefWidth="90.0" style="-fx-border-color: #000; -fx-border-radius: 2px;" text="JWT" />
          </children>
       </Pane>
       <Line endX="137.5" startX="137.5" startY="791.0" />

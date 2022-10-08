@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="781.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.it.controller.JwtController">
+   <children>
+      <JFXTextArea fx:id="jwtArea" layoutX="14.0" layoutY="54.0" prefHeight="711.0" prefWidth="471.0" style="-fx-border-color: #000; -fx-border-radius: 2px;" />
+      <Label layoutX="27.0" layoutY="14.0" prefHeight="33.0" prefWidth="105.0" text="Encoded">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="513.0" layoutY="14.0" prefHeight="33.0" prefWidth="105.0" text="Decoded">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="jwtHeaderText" layoutX="513.0" layoutY="74.0" prefHeight="200.0" prefWidth="471.0" style="-fx-border-color: #000; -fx-border-radius: 2px;" />
+      <Label layoutX="515.0" layoutY="47.0" prefHeight="17.0" prefWidth="62.0" text="HEADER:" />
+      <JFXTextArea fx:id="jwtPlayloadText" layoutX="513.0" layoutY="310.0" prefHeight="452.0" prefWidth="471.0" style="-fx-border-color: #000; -fx-border-radius: 2px;" />
+      <Label layoutX="515.0" layoutY="286.0" prefHeight="17.0" prefWidth="114.0" text="PLAYLOAD:" />
+      <JFXComboBox fx:id="signBox" layoutX="273.0" layoutY="14.0" />
+   </children>
+</Pane>

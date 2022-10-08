@@ -23,6 +23,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -32,8 +34,6 @@ public class MainController implements Initializable {
     JFXTextArea originArea;
     @FXML
     JFXTextArea transferArea;
-    @FXML
-    Pane jwtPane;
     @FXML
     Pane rightPane;
     @Autowired
@@ -53,14 +53,16 @@ public class MainController implements Initializable {
     public void transferToJson() {
         rightPane.setVisible(true);
         transferBtn.setText("转化JSON");
-        jwtPane.setVisible(false);
+        this.originArea.setText(null);
+        this.transferArea.setText(null);
         type = 0;
     }
 
     public void formatSql() {
         rightPane.setVisible(true);
-        jwtPane.setVisible(false);
         transferBtn.setText("转化SQL");
+        this.originArea.setText(null);
+        this.transferArea.setText(null);
         type = 1;
     }
 
@@ -82,10 +84,16 @@ public class MainController implements Initializable {
         }
     }
 
+    public void toBase64Btn(){
+        this.type = 2;
+        transferBtn.setText("Base64转化");
+        this.originArea.setText(null);
+        this.transferArea.setText(null);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.listView.setItems(FXCollections.observableArrayList());
-//        jwtPane.setVisible(false);
         this.listView.getSelectionModel().selectedItemProperty().addListener(
                 (observableValue, s, t1) -> {
                     this.originArea.setText(t1.getOrgText());
@@ -114,6 +122,18 @@ public class MainController implements Initializable {
                     return;
                 }
                 transferValue = sqlService.transfer(text);
+            }else if(this.type ==2){
+                if (StringUtils.isEmpty(text)){
+                    Base64.Decoder decoder = Base64.getDecoder();
+                    byte[] decode = decoder.decode(transferArea.getText());
+                    originArea.setText(new String(decode));
+                    transferValue = transferArea.getText();
+                }else {
+                    Base64.Encoder encoder = Base64.getEncoder();
+                    String s = encoder.encodeToString(text.getBytes(StandardCharsets.UTF_8));
+                    transferValue = s;
+                }
+
             } else {
                 if (StringUtils.isEmpty(text)) {
                     transferArea.setText("");

@@ -8,6 +8,7 @@ import com.it.bean.JWTBean;
 import com.it.service.IJwtService;
 import org.springframework.stereotype.Service;
 
+import javax.management.Notification;
 import java.util.Base64;
 import java.util.Map;
 
@@ -28,6 +29,7 @@ public class JwtServiceImpl implements IJwtService {
 
     @Override
     public JWTBean decode(String token) {
+
         DecodedJWT decode = JWT.decode(token);
         String signature = decode.getAlgorithm();
         String type = decode.getType();
